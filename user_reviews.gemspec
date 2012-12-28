@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["info@unpakt.com"]
   gem.description   = %q{Wrapper for mulitple user review APIs}
   gem.summary       = %q{Wrapper for mulitple user review APIs}
-  gem.homepage      = "unpakt.com"
+  gem.homepage      = "http://www.unpakt.com"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
