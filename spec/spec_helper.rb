@@ -5,8 +5,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-Dir[File.dirname(__FILE__) + "/../providers/**/*.rb"].each do |file|
-  puts "#{file}"
+Dir[File.dirname(__FILE__) + "/../lib/providers/**/*.rb"].each do |file|
   require_relative "#{file}"
 end
 
