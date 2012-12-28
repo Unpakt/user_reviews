@@ -5,7 +5,7 @@ require 'providers/google_reviews/business'
 require 'providers/google_reviews/review'
 require 'providers/citysearch_reviews/business'
 require 'providers/citysearch_reviews/review'
-require "providers/city_search_reviews_api"
+require "providers/citysearch_reviews_api"
 require "providers/google_reviews_api"
 require "providers/yelp_reviews_api"
 
