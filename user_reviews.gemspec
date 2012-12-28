@@ -9,6 +9,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Unpakt LLC"]
   gem.email         = ["info@unpakt.com"]
   gem.description   = %q{Wrapper for mulitple user review APIs}
+  gem.summary       = %q{Wrapper for mulitple user review APIs}
   gem.homepage      = "unpakt.com"
 
   gem.files         = `git ls-files`.split($/)
