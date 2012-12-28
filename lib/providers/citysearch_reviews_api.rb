@@ -23,7 +23,7 @@ module Providers
     private
 
     def business_url(name, business_type = "", city_state)
-      "http://api.citygridmedia.com/content/places/v2/search/where?where=#{URI::encode(city_state)}&what=#{URI::encode(business_name)}&publisher=#{@key}&format=json"
+      "http://api.citygridmedia.com/content/places/v2/search/where?where=#{URI::encode(city_state)}&what=#{URI::encode(name)}&publisher=#{@key}&format=json"
     end
 
     def review_path(citysearch_id)
