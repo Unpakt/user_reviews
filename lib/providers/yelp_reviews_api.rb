@@ -12,9 +12,9 @@ module Providers
       @token_secret = options[:token_secret]
     end
 
-    def find_business_by_name(name, business_type, city_state = "")
+    def find_business_by_name(name, business_type, city_state)
       access_token = create_oauth_token
-      response = JSON.parse(access_token.get(business_path(name, business_type)).body)
+      response = JSON.parse(access_token.get(business_path(name, business_type, city_state)).body)
       parse_businesses(response["businesses"])
     end
 
@@ -36,8 +36,8 @@ module Providers
       OAuth::AccessToken.new(consumer, token, token_secret)
     end
 
-    def business_path(name, business_type)
-      "/v2/search?term=#{URI::encode(name)}&category_filter=#{URI::encode(business_type)}"
+    def business_path(name, business_type, city_state)
+      "/v2/search?term=#{URI::encode(name)}&category_filter=#{URI::encode(business_type)}&location=#{URI::encode(city_state)}"
     end
 
     def review_path(yelp_id)

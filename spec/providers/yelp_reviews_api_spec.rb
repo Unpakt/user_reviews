@@ -28,7 +28,7 @@ describe Providers::YelpReviewsApi do
 
     it "returns an array of possible businesses" do
       yelp_wrapper.should_receive(:create_oauth_token) { token }
-      yelp_wrapper.should_receive(:business_path).with("Unpakt", "movers") { business_path }
+      yelp_wrapper.should_receive(:business_path).with("Unpakt", "movers", "NY,NY") { business_path }
       token.should_receive(:get).with(business_path) { api_result }
       api_result.should_receive(:body) { response_body }
 
@@ -36,7 +36,7 @@ describe Providers::YelpReviewsApi do
       JSON.should_receive(:parse).with(response_body) { json_result }
       yelp_wrapper.should_receive(:parse_businesses).with(business_places) { query_result }
 
-      yelp_wrapper.find_business_by_name("Unpakt", "movers").should eq query_result
+      yelp_wrapper.find_business_by_name("Unpakt", "movers", "NY,NY").should eq query_result
     end
   end
 
