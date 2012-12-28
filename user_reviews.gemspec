@@ -17,9 +17,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_development_dependency "rspec"
-  gem.add_development_dependency "rake"
-  gem.add_development_dependency "httparty"
-  gem.add_development_dependency "oauth"
-  gem.add_development_dependency "json"
+  gem.add_dependency "rspec"
+  gem.add_dependency "rake"
+  gem.add_dependency "httparty"
+  gem.add_dependency "oauth"
+  gem.add_dependency "json"
 end
