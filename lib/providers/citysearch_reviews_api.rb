@@ -32,7 +32,9 @@ module Providers
 
     def parse_business_results(json)
       result = []
+      return result if json.nil? || json["results"].nil?
 
+      json = json["results"] || []
       json["locations"].each do |e|
         result.push(Providers::CitysearchReviews::Business.new(e))
       end
@@ -42,7 +44,9 @@ module Providers
 
     def parse_reviews_results(json)
       result = []
+      return result if json.nil? || json["results"].nil?
 
+      json = json["results"] || []
       json["reviews"].each do |e|
         result.push(Providers::CitysearchReviews::Review.new(e))
       end
