@@ -26,7 +26,7 @@ module Providers
       "http://api.citygridmedia.com/content/places/v2/search/where?where=#{URI::encode(city_state)}&what=#{URI::encode(name)}&publisher=#{@key}&format=json"
     end
 
-    def review_path(citysearch_id)
+    def reviews_url(citysearch_id)
       "http://api.citygridmedia.com/content/reviews/v2/search/where?listing_id=#{citysearch_id}&publisher=#{@key}&format=json"
     end
 
