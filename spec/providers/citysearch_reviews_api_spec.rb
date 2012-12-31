@@ -17,7 +17,7 @@ describe Providers::CitysearchReviewsApi do
     let(:query_result) { [Providers::CitysearchReviews::Business.new(json_result)] }
 
     it "returns an array of possible businesses" do
-      citysearch_wrapper.should_receive(:business_url).with("Unpakt", "moving company", "NY,NY") {  business_url }
+      citysearch_wrapper.should_receive(:business_search_url).with("Unpakt", "moving company", "NY,NY") {  business_url }
       HTTParty.should_receive(:get).with(business_url) { json_result }
       citysearch_wrapper.should_receive(:parse_business_results).with(json_result) { query_result }
 
