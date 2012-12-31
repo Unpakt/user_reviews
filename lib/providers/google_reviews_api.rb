@@ -43,6 +43,7 @@ module Providers
 
     def parse_business_results(json)
       result = []
+      return result if json.nil? || json["results"].nil?
 
       json["results"].each do |e|
         result.push(Providers::GoogleReviews::Business.new(e))
@@ -53,6 +54,7 @@ module Providers
 
     def parse_reviews_results(json)
       result = []
+      return result if json.nil? || json["result"].nil? || json["result"]["reviews"].nil?
 
       json["result"]["reviews"].each do |e|
         result.push(Providers::GoogleReviews::Review.new(e))
