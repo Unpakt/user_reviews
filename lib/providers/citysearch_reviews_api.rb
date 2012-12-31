@@ -19,7 +19,10 @@ module Providers
     def find_business_by_id(citysearch_id)
       request_url = business_url(citysearch_id)
       json_results = HTTParty.get(request_url)
-      parse_business_results(json_results).first
+      json = json_results["locations"] || []
+
+      return json if json.empty?
+      Providers::CitysearchReviews::Business.new(json.first)
     end
 
     def find_reviews_for_business(citysearch_id)
@@ -31,7 +34,7 @@ module Providers
     private
 
     def business_url(citysearch_id)
-      "http://api.citygridmedia.com/content/places/v2/detail?publisher=#{@key}&id=#{citysearch_id}&id_type=cs&client_ip=127.0.0.1"
+      "http://api.citygridmedia.com/content/places/v2/detail?publisher=#{@key}&id=#{citysearch_id}&id_type=cs&client_ip=127.0.0.1&format=json"
     end
 
     def business_search_url(name, business_type = "", city_state)
