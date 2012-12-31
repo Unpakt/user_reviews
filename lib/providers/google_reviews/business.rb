@@ -8,7 +8,8 @@ module Providers
         @address = node["formatted_address"]
         @reference = node["reference"]
         @average_rating = node["rating"]
-        @id = node["id"]
+        node["url"] =~ /https?:\/\/plus.google.com\/(\d+)(\/.*)?/
+        @id = $1
       end
     end
   end
