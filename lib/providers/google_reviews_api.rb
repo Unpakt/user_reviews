@@ -23,7 +23,12 @@ module Providers
     def find_business_by_id(google_id)
       request_url = reviews_url(google_id)
       json_results = HTTParty.get(request_url)
-      Providers::GoogleReviews::Business.new(json_results["result"])
+      return json_results if json_results.nil?
+
+      json = json_results["result"]
+      return json if json.nil?
+
+      Providers::GoogleReviews::Business.new(json)
     end
 
     private
