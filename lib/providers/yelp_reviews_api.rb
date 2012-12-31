@@ -24,6 +24,12 @@ module Providers
       parse_reviews(response["reviews"])
     end
 
+    def find_business_by_id(yelp_id)
+      access_token = create_oauth_token
+      response = JSON.parse(access_token.get(review_path(yelp_id)).body)
+      Providers::YelpReviews::Business.new(response)
+    end
+
     private
 
     def create_oauth_token

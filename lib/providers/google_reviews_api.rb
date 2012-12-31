@@ -20,6 +20,12 @@ module Providers
       parse_reviews_results(json_results)
     end
 
+    def find_business_by_id(google_id)
+      request_url = reviews_url(google_id)
+      json_results = HTTParty.get(request_url)
+      Providers::GoogleReviews::Business.new(json_results["result"])
+    end
+
     private
 
     def business_url(business_name, business_type)
