@@ -14,7 +14,7 @@ describe Providers::CitysearchReviewsApi do
     let(:json_result) { { "address" => {} } }
     let(:business_url) { "http://www.example.com" }
     let(:citysearch_wrapper) { Providers::CitysearchReviewsApi.new(key: "") }
-    let(:query_result) { [Providers::CitysearchReviews::Business.new(json_result)] }
+    let(:query_result) { [Providers::CitysearchReviews::Business.build_business(json_result)] }
 
     it "returns an array of possible businesses" do
       citysearch_wrapper.should_receive(:business_search_url).with("Unpakt", "moving company", "NY,NY") {  business_url }

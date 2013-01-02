@@ -3,6 +3,13 @@ module Providers
     class Business
       attr_accessor :name, :address, :reference, :average_rating
 
+      def self.build_business(node)
+        return nil if [node["name"], node["address"], node["rating"], node["id"]].include?(nil)
+        new(node)
+      end
+
+      private
+
       def initialize(node)
         @name = node["name"]
         full_address = node["address"]

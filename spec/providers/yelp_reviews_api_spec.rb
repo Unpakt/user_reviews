@@ -24,7 +24,7 @@ describe Providers::YelpReviewsApi do
     let(:json_result) {{"businesses" => business_places }}
     let(:business_places) { [business_place] }
     let(:yelp_wrapper) { Providers::YelpReviewsApi.new({}) }
-    let(:query_result) { [Providers::YelpReviews::Business.new(business_place)] }
+    let(:query_result) { [Providers::YelpReviews::Business.build_business(business_place)] }
 
     it "returns an array of possible businesses" do
       yelp_wrapper.should_receive(:create_oauth_token) { token }

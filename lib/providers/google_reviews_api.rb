@@ -28,7 +28,7 @@ module Providers
       json = json_results["result"]
       return json if json.nil?
 
-      Providers::GoogleReviews::Business.new(json)
+      Providers::GoogleReviews::Business.build_business(json)
     end
 
     private
@@ -46,7 +46,7 @@ module Providers
       return result if json.nil? || json["results"].nil?
 
       json["results"].each do |e|
-        result.push(Providers::GoogleReviews::Business.new(e))
+        result.push(Providers::GoogleReviews::Business.build_business(e))
       end
 
       result

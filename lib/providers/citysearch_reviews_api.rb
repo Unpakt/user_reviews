@@ -22,7 +22,7 @@ module Providers
       json = json_results["locations"] || []
 
       return json if json.empty?
-      Providers::CitysearchReviews::Business.new(json.first)
+      Providers::CitysearchReviews::Business.build_business(json.first)
     end
 
     def find_reviews_for_business(citysearch_id)
@@ -51,7 +51,7 @@ module Providers
 
       json = json["results"] || []
       json["locations"].each do |e|
-        result.push(Providers::CitysearchReviews::Business.new(e))
+        result.push(Providers::CitysearchReviews::Business.build_business(e))
       end
 
       result

@@ -14,7 +14,7 @@ describe Providers::GoogleReviewsApi do
     let(:json_result) { "{}" }
     let(:business_url) { "http://www.example.com" }
     let(:google_wrapper) { Providers::GoogleReviewsApi.new(key: "") }
-    let(:query_result) { [Providers::GoogleReviews::Business.new(json_result)] }
+    let(:query_result) { [Providers::GoogleReviews::Business.build_business(json_result)] }
 
     it "returns an array of possible businesses" do
       google_wrapper.should_receive(:business_url).with("Unpakt", "moving_company") {  business_url }

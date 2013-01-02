@@ -3,7 +3,20 @@ module Providers
     class Business
       attr_accessor :name, :address, :yelp_id, :average_rating
 
+      def self.build_business(node)
+        return nil if [node["location"], node["rating"], node["id"]].include?(nil)
+        new(node)
+      end
+
+      private
+
       def initialize(node)
+        return if [node,
+                  node["location"],
+                  node["location"]["display_address"],
+                  node["rating"],
+                  node["id"]].include?(nil)
+
         @address = node["location"]["display_address"].join(" ")
         @name = node["name"]
         @average_rating = node["rating"]
