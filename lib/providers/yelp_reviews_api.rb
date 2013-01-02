@@ -52,7 +52,10 @@ module Providers
 
     def parse_businesses(business_list)
       result = []
-      return result if business_list.nil?
+      return result if business_list.nil? ||
+                       business_list.empty? ||
+                       business_list["location"].nil? ||
+                       business_list["location"]["display_address"].nil?
 
       business_list.each do |business|
         result.push(Providers::YelpReviews::Business.new(business))
