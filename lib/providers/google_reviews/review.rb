@@ -16,7 +16,7 @@ module Providers
         return 0 if arr.nil? || arr.size < 1
 
         sum = 0
-        arr.each { |el| sum += el["rating"] }
+        arr.each { |el| sum += el["rating"].to_f }
         sum.to_f / arr.size
       end
     end
