@@ -10,5 +10,16 @@ require "providers/google_reviews_api"
 require "providers/yelp_reviews_api"
 
 module UserReviews
-  # Your code goes here...
+  class ApiProvider
+    def self.get_api_provider(service, init_options)
+      case service
+      when :yelp
+        Providers::YelpReviewsApi.new(init_options)
+      when :citysearch
+        Providers::CitysearchReviewsApi.new(init_options)
+      when :google
+        Providers::GoogleReviewsApi.new(init_options)
+      end
+    end
+  end
 end
