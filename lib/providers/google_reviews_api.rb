@@ -3,6 +3,7 @@ require 'open-uri'
 
 module Providers
   class GoogleReviewsApi
+    class ExceededQueryLimitError < StandardError; end
 
     def initialize(options)
       @key = options[:key]
@@ -10,28 +11,32 @@ module Providers
 
     def find_business_by_name(name, business_type, city_state = "")
       request_url = business_url(name, business_type)
-      json_results = HTTParty.get(request_url)
-      parse_business_results(json_results)
+      @json_results = HTTParty.get(request_url)
+      parse_business_results(@json_results)
     end
 
     def find_reviews_for_business(ref)
       request_url = reviews_url(ref)
-      json_results = HTTParty.get(request_url)
-      parse_reviews_results(json_results)
+      @json_results = HTTParty.get(request_url)
+      parse_reviews_results(@json_results)
     end
 
     def find_business_by_id(google_id)
       request_url = reviews_url(google_id)
-      json_results = HTTParty.get(request_url)
-      return json_results if json_results.nil?
+      @json_results = HTTParty.get(request_url)
+      return @json_results if @json_results.nil?
 
-      json = json_results["result"]
+      json = @json_results["result"]
       return json if json.nil?
 
       Providers::GoogleReviews::Business.build_business(json)
     end
 
     private
+
+    def query_limit_has_been_reached?
+      @json_results["status"] == 'OVER_QUERY_LIMIT'
+    end
 
     def business_url(business_name, business_type)
       "https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{@key}&query=#{URI::encode(business_name)}=&sensor=false&type=#{URI::encode(business_type)}"
@@ -42,6 +47,8 @@ module Providers
     end
 
     def parse_business_results(json)
+      raise ExceededQueryLimitError if query_limit_has_been_reached?
+
       result = []
       return result if json.nil? || json["results"].nil?
 
