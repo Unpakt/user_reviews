@@ -1,7 +1,7 @@
 module Providers
   module YelpReviews
     class Business
-      attr_accessor :name, :address, :yelp_id, :average_rating
+      attr_accessor :name, :address, :yelp_id, :average_rating, :total_reviews
 
       def self.build_business(node)
         return nil if [node["location"], node["rating"], node["id"]].include?(nil)
@@ -15,11 +15,13 @@ module Providers
                   node["location"],
                   node["location"]["display_address"],
                   node["rating"],
+                  node["review_count"],
                   node["id"]].include?(nil)
 
         @address = node["location"]["display_address"].join(" ")
         @name = node["name"]
         @average_rating = node["rating"]
+        @total_reviews = node["review_count"]
         @yelp_id = node["id"]
       end
     end

@@ -8,7 +8,8 @@ describe Providers::CitysearchReviews::Business do
         "name" => '',
         "address" => address,
         "id" => stub,
-        "rating" => stub
+        "rating" => stub,
+        "review_info" => {}
       }
     end
 
