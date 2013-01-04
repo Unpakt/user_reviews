@@ -4,7 +4,7 @@ module Providers
       attr_accessor :name, :address, :reference, :average_rating, :url
 
       def self.build_business(node)
-        return nil if [node["name"], node["formatted_address"], node["reference"], node["rating"],node["url"]].include?(nil)
+        return nil if [node["name"], node["formatted_address"], node["reference"]].include?(nil)
         new(node)
       end
 
