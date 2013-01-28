@@ -1,6 +1,6 @@
 # UserReviews
 
-UserReviews is a simple wrapper for Yelp CitySearch and GoogleRatings API
+UserReviews is a simple Ruby wrapper for Yelp CitySearch and GoogleRatings API
 
 ## Installation
 
