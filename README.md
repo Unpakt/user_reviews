@@ -65,9 +65,9 @@ Each Business object has 4 attributes:
 
 
 More information about each API:
-Yelp: http://www.yelp.com/developers/documentation/v2/overview
-CitySearch: http://www.citygridmedia.com/developer/
-GoogleReviews: https://developers.google.com/places/documentation/
+* Yelp: http://www.yelp.com/developers/documentation/v2/overview
+* CitySearch: http://www.citygridmedia.com/developer/
+* GoogleReviews: https://developers.google.com/places/documentation/
 
 
 ## Contributing
