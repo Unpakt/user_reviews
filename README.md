@@ -1,51 +1,73 @@
 # UserReviews
 
-UserReviews is a simple Ruby wrapper for Yelp CitySearch and GoogleRatings API
+Is a simple api wrapper for:
 
-## Installation
+* Yelp
+* City Search
+* Google Ratings
 
-Add this line to your application's Gemfile:
+## Getting started
 
-    gem 'user_reviews'
+### Add this line to your application's Gemfile:
 
-And then execute:
+```ruby
+gem 'user_reviews'
+```
 
-    $ bundle
+### And then execute:
 
-Or install it yourself as:
+```console
+$ bundle
+```
 
-    $ gem install user_reviews
+### Or install it yourself as:
+
+```console
+$ gem install user_reviews
+```
 
 ## Usage
 
+### Create an api_provider
 
-    # create the api_provider
-    # For city search
+### For city search
 
-    auth_info = {publisher_key: 'your_city_search_api_key'}
-    api_provider = UserReviews::ApiProvider.get_api_provider(:city_search, auth_info)
+```ruby
+auth_info = {publisher_key: 'your_city_search_api_key'}
+api_provider = UserReviews::ApiProvider.get_api_provider(:city_search, auth_info)
+```
 
-    # For Google Reviews
+### For Google Reviews
 
-    auth_info = {key: 'your_google_api_key'}
-    api_provider = UserReviews::ApiProvider.get_api_provider(:google_reviews, auth_info)
+```ruby
+auth_info = {key: 'your_google_api_key'}
+api_provider = UserReviews::ApiProvider.get_api_provider(:google_reviews, auth_info)
+```
 
-    # For Yelp
+### For Yelp
 
-    auth_info = {consumer_key: 'yelp_consumer_key', consumer_secret:'yelp_consumer_secret' ,token:'yelp_token' , token_secret:'yelp_token_secret'}
-    api_provider = UserReviews::ApiProvider.get_api_provider(:yelp, auth_info)
+```ruby
+auth_info = {consumer_key: 'yelp_consumer_key', consumer_secret:'yelp_consumer_secret' ,token:'yelp_token' , token_secret:'yelp_token_secret'}
+api_provider = UserReviews::ApiProvider.get_api_provider(:yelp, auth_info)
+```
 
-    #Get Reviews for a business
+### Get reviews for a business
 
-    api_provider.find_reviews_for_business city_search_business_id
+```ruby
+api_provider.find_reviews_for_business city_search_business_id
+```
 
-    #Get information about a business
+### Get information about a business
 
-    api_provider.find_business_by_id(business_id)
+```ruby
+api_provider.find_business_by_id(business_id)
+```
 
-    #for Goolge Reviews only
+### Google Reviews only
 
-    api_provider.find_business_by_name
+```ruby
+api_provider.find_business_by_name
+```
 
 
 Each Review object has 4 attributes:
@@ -62,10 +84,9 @@ Each Business object has 4 attributes:
 * url
 
 
-
-
 More information about each API:
-* Yelp: http://www.yelp.com/developers/documentation/v2/overview
+
+* [Yelp]: http://www.yelp.com/developers/documentation/v2/overview
 * CitySearch: http://www.citygridmedia.com/developer/
 * GoogleReviews: https://developers.google.com/places/documentation/
 
@@ -80,4 +101,4 @@ More information about each API:
 
 ## License
 
-MIT License. Copyright 2012-2013. http://www.unpakt.com
+MIT License. Copyright 2013. http://www.unpakt.com
