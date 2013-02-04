@@ -5,9 +5,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-Dir[File.dirname(__FILE__) + "/../lib/providers/**/*.rb"].each do |file|
-  require_relative "#{file}"
-end
+require_relative File.dirname(__FILE__) + "/../lib/user_reviews"
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true

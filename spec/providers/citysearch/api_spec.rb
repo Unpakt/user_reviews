@@ -1,20 +1,18 @@
 require 'spec_helper'
 
-describe Providers::CitysearchReviewsApi do
-  before do
-  end
+describe Providers::Citysearch::Api do
 
   describe "#initialize" do
     it "initializes a new CitySearch provider" do
-      Providers::CitysearchReviewsApi.new(publisher_key: "").should be
+      Providers::Citysearch::Api.new(publisher_key: "").should be
     end
   end
 
   describe "#find_business_by_name" do
     let(:json_result) { { "address" => {} } }
     let(:business_url) { "http://www.example.com" }
-    let(:citysearch_wrapper) { Providers::CitysearchReviewsApi.new(key: "") }
-    let(:query_result) { [Providers::CitysearchReviews::Business.build_business(json_result)] }
+    let(:citysearch_wrapper) { Providers::Citysearch::Api.new(key: "") }
+    let(:query_result) { [Providers::Citysearch::Business.build_business(json_result)] }
 
     it "returns an array of possible businesses" do
       citysearch_wrapper.should_receive(:business_search_url).with("Unpakt", "moving company", "NY,NY") {  business_url }
@@ -30,8 +28,8 @@ describe Providers::CitysearchReviewsApi do
     let(:citysearch_id) { stub }
     let(:json_result) { {"review_date" => "2007-03-07T21:53:41.000Z"} }
     let(:reviews_url) { "http://www.example.com" }
-    let(:citysearch_wrapper) { Providers::CitysearchReviewsApi.new(key: "") }
-    let(:query_result) { [Providers::CitysearchReviews::Review.new(json_result)] }
+    let(:citysearch_wrapper) { Providers::Citysearch::Api.new(key: "") }
+    let(:query_result) { [Providers::Citysearch::Review.new(json_result)] }
 
     it "returns the rating for a given entity" do
       citysearch_wrapper.should_receive(:reviews_url).with(citysearch_id) {  reviews_url }

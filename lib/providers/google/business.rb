@@ -1,5 +1,5 @@
 module Providers
-  module GoogleReviews
+  module Google
     class Business
       attr_accessor :name, :address, :reference, :average_rating, :url
 

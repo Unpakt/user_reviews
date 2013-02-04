@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Providers::GoogleReviews::Business do
+describe Providers::Google::Business do
   describe "#initialize" do
     let(:node) do
       {
@@ -15,14 +15,14 @@ describe Providers::GoogleReviews::Business do
     context "when required fields are not present" do
       let(:node) { Hash.new(nil) }
       it "returns nil" do
-        biz = Providers::GoogleReviews::Business.build_business(node)
+        biz = Providers::Google::Business.build_business(node)
         biz.should be_nil
       end
     end
 
     context "when required fields are present" do
       it "returns an Bussiness object" do
-        Providers::GoogleReviews::Business.build_business(node).should be
+        Providers::Google::Business.build_business(node).should be
       end
     end
 

@@ -1,12 +1,10 @@
 require 'spec_helper'
 
-describe Providers::YelpReviewsApi do
-  before do
-  end
+describe Providers::Yelp::Api do
 
   describe "#initialize" do
     it "initializes a new GoogleReviews provider" do
-      Providers::YelpReviewsApi.new(consumer_key: "",
+      Providers::Yelp::Api.new(consumer_key: "",
                                     consumer_secret: "",
                                     token: "",
                                     token_secret: "").should be
@@ -23,8 +21,8 @@ describe Providers::YelpReviewsApi do
     end
     let(:json_result) {{"businesses" => business_places }}
     let(:business_places) { [business_place] }
-    let(:yelp_wrapper) { Providers::YelpReviewsApi.new({}) }
-    let(:query_result) { [Providers::YelpReviews::Business.build_business(business_place)] }
+    let(:yelp_wrapper) { Providers::Yelp::Api.new({}) }
+    let(:query_result) { [Providers::Yelp::Business.build_business(business_place)] }
 
     it "returns an array of possible businesses" do
       yelp_wrapper.should_receive(:create_oauth_token) { token }
@@ -49,8 +47,8 @@ describe Providers::YelpReviewsApi do
     let(:review) {{"rating" => 1}}
     let(:reviews) { [review] }
     let(:json_result) {{"reviews" => reviews }}
-    let(:yelp_wrapper) { Providers::YelpReviewsApi.new({}) }
-    let(:query_result) { [Providers::YelpReviews::Review.new(review)] }
+    let(:yelp_wrapper) { Providers::Yelp::Api.new({}) }
+    let(:query_result) { [Providers::Yelp::Review.new(review)] }
 
     it "returns an array of possible businesses" do
       yelp_wrapper.should_receive(:create_oauth_token) { token }

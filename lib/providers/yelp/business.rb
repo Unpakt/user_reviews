@@ -1,5 +1,5 @@
 module Providers
-  module YelpReviews
+  module Yelp
     class Business
       attr_accessor :name, :address, :yelp_id, :average_rating, :total_reviews
 

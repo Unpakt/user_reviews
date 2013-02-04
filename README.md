@@ -34,41 +34,34 @@ $ gem install user_reviews
 
 ```ruby
 auth_info = {publisher_key: 'your_city_search_api_key'}
-api_provider = UserReviews::ApiProvider.get_api_provider(:city_search, auth_info)
+city_search = UserReviews.provider_factory(:city_search, auth_info)
 ```
 
 ### For Google Reviews
 
 ```ruby
 auth_info = {key: 'your_google_api_key'}
-api_provider = UserReviews::ApiProvider.get_api_provider(:google_reviews, auth_info)
+google = UserReviews.provider_factory(:google_reviews, auth_info)
 ```
 
 ### For Yelp
 
 ```ruby
 auth_info = {consumer_key: 'yelp_consumer_key', consumer_secret:'yelp_consumer_secret' ,token:'yelp_token' , token_secret:'yelp_token_secret'}
-api_provider = UserReviews::ApiProvider.get_api_provider(:yelp, auth_info)
+yelp = UserReviews.provider_factory(:yelp, auth_info)
 ```
 
 ### Get reviews for a business
 
 ```ruby
-api_provider.find_reviews_for_business city_search_business_id
+city_search.find_reviews_for_business city_search_business_id
 ```
 
 ### Get information about a business
 
 ```ruby
-api_provider.find_business_by_id(business_id)
+city_search.find_business_by_id(business_id)
 ```
-
-### Google Reviews only
-
-```ruby
-api_provider.find_business_by_name
-```
-
 
 Each Review object has 4 attributes:
 * author_name
@@ -95,9 +88,10 @@ More information about each API:
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+3. Add your own provider folder which inherits from the Providers::Base class and tests
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
 
 ## License
 

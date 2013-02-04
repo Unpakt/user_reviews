@@ -1,7 +1,6 @@
-require 'date'
 
 module Providers
-  module CitysearchReviews
+  module Citysearch
     class Review
       attr_accessor :rating, :author_name, :reviewed_at, :comment
 

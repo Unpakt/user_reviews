@@ -1,5 +1,5 @@
 module Providers
-  module GoogleReviews
+  module Google
     class Review
       attr_accessor :rating, :author_name, :reviewed_at, :comment
 

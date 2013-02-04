@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Providers::YelpReviews::Business do
+describe Providers::Yelp::Business do
   describe "#initialize" do
     let(:node) do
       {
@@ -13,14 +13,14 @@ describe Providers::YelpReviews::Business do
     context "when required fields are not present" do
       let(:node) { Hash.new(nil) }
       it "returns nil" do
-        biz = Providers::YelpReviews::Business.build_business(node)
+        biz = Providers::Yelp::Business.build_business(node)
         biz.should be_nil
       end
     end
 
     context "when required fields are present" do
       it "returns an Bussiness object" do
-        Providers::YelpReviews::Business.build_business(node).should be
+        Providers::Yelp::Business.build_business(node).should be
       end
     end
 

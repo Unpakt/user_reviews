@@ -1,5 +1,5 @@
 module Providers
-  module CitysearchReviews
+  module Citysearch
     class Business
       attr_accessor :name, :address, :reference, :average_rating, :total_reviews
 
