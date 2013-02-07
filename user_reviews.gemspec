@@ -1,0 +1,25 @@
+# -*- encoding: utf-8 -*-
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'user_reviews/version'
+
+Gem::Specification.new do |gem|
+  gem.name          = "user_reviews"
+  gem.version       = UserReviews::VERSION.dup
+  gem.authors       = ["Unpakt LLC"]
+  gem.email         = ["info@unpakt.com"]
+  gem.description   = %q{Wrapper for mulitple user review APIs}
+  gem.summary       = %q{Wrapper for mulitple user review APIs}
+  gem.homepage      = "http://www.unpakt.com"
+
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.require_paths = ["lib"]
+
+  gem.add_dependency "activesupport", "~> 3.2.11"
+  gem.add_dependency "rake"
+  gem.add_dependency "httparty"
+  gem.add_dependency "oauth"
+  gem.add_dependency "json"
+end
