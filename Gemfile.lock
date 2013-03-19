@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    user_reviews (0.0.7)
+    user_reviews (0.0.8)
       activesupport (~> 3.2.11)
       httparty
       json
@@ -11,7 +11,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.11)
+    activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     coderay (1.0.8)
@@ -19,10 +19,10 @@ GEM
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
-    i18n (0.6.1)
-    json (1.7.6)
+    i18n (0.6.4)
+    json (1.7.7)
     method_source (0.8.1)
-    multi_json (1.5.0)
+    multi_json (1.6.1)
     multi_xml (0.5.2)
     oauth (0.4.7)
     pry (0.9.11.4)
