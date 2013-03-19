@@ -24,7 +24,7 @@ module Providers
       def find_business_by_id(yelp_id)
         access_token = create_oauth_token
         response = JSON.parse(access_token.get(review_path(yelp_id)).body)
-        Providers::YelpReviews::Business.build_business(response) if response &&
+        Providers::Yelp::Business.build_business(response) if response &&
           response["location"] &&
           response["location"]["display_address"]
 
@@ -58,7 +58,7 @@ module Providers
           business_list["location"]["display_address"].nil?
 
         business_list.each do |business|
-          result.push(Providers::YelpReviews::Business.build_business(business))
+          result.push(Providers::Yelp::Business.build_business(business))
         end
 
         result
@@ -69,7 +69,7 @@ module Providers
         return result if review_list.nil?
 
         review_list.each do |review|
-          result.push(Providers::YelpReviews::Review.new(review))
+          result.push(Providers::Yelp::Review.new(review))
         end
 
         result
