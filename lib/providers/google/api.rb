@@ -63,7 +63,7 @@ module Providers
         return result if json.nil? || json["result"].nil? || json["result"]["reviews"].nil?
 
         json["result"]["reviews"].each do |e|
-          result.push(Providers::GoogleReviews::Review.new(e))
+          result.push(Providers::Google::Review.new(e))
         end
 
         result
