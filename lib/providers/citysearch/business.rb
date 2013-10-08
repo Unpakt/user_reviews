@@ -4,17 +4,20 @@ module Providers
       attr_accessor :name, :address, :reference, :average_rating, :total_reviews, :url
 
       def self.build_business(node)
+        return nil if node.nil? ||
+                      node["name"].nil? ||
+                      node["address"].nil? ||
+                      node["user_review_count"].nil? ||
+                      node["id"].nil? ||
+                      node["rating"].nil? ||
+                      node["profile"].nil?
+
         new(node)
       end
 
       private
 
       def initialize(node)
-        return if [node,
-                  node["name"],
-                  node["address"],
-                  node["user_review_count"],
-                  node["profile"]].include?(nil)
 
         @name = node["name"]
         full_address = node["address"]
