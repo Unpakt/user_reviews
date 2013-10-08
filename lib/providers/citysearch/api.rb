@@ -46,9 +46,9 @@ module Providers
 
       def parse_business_results(json)
         result = []
-        return result if json.nil? || json["results"].nil?
+        return result if json.nil? || json.parsed_response.nil? || json.parsed_response["results"].nil?
 
-        json = json["results"] || []
+        json = json.parsed_response["results"]
         json["locations"].each do |e|
           result.push(Providers::Citysearch::Business.build_business(e))
         end
