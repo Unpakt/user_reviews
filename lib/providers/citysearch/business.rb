@@ -5,12 +5,9 @@ module Providers
 
       def self.build_business(node)
         return nil if node.nil? ||
-                      node["name"].nil? ||
-                      node["address"].nil? ||
-                      node["user_review_count"].nil? ||
                       node["id"].nil? ||
-                      node["rating"].nil? ||
-                      node["profile"].nil?
+                      node["name"].nil? ||
+                      node["address"].nil?
 
         new(node)
       end
