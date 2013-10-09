@@ -7,7 +7,6 @@ describe Providers::Citysearch::Business do
     context "when required fields are not present" do
       let(:node) do
         {
-          "name" => '',
           "address" => address,
           "id" => stub,
           "rating" => stub,

@@ -5,7 +5,7 @@ module Providers
 
       def self.build_business(node)
         return nil if node.nil? ||
-                      node["id"].nil?
+                      node["id"].nil? ||
                       node["name"].nil? ||
                       node["location"].nil? ||
                       node["location"].empty? ||
