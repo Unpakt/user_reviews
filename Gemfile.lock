@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    user_reviews (0.0.11)
+    user_reviews (0.0.12)
       activesupport (~> 3.2.11)
       httparty
       json
