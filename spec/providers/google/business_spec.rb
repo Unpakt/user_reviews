@@ -8,7 +8,8 @@ describe Providers::Google::Business do
         "formatted_address" => '',
         "reference" => stub,
         "url" => stub,
-        "rating" => stub
+        "rating" => stub,
+        "user_ratings_total" => stub
       }
     end
 
