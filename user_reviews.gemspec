@@ -17,7 +17,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "activesupport", "~> 3.2.11"
   gem.add_dependency "rake"
   gem.add_dependency "httparty"
   gem.add_dependency "oauth"
