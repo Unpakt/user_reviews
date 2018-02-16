@@ -38,7 +38,7 @@ module Providers
       end
 
       def business_url(business_name, business_type)
-        "https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{@key}&query=#{URI::encode(business_name)}=&sensor=false&type=#{URI::encode(business_type)}"
+        "https://maps.googleapis.com/maps/api/place/textsearch/json?key=#{@key}&query=#{URI::encode(business_name, /\W/)}=&sensor=false&type=#{URI::encode(business_type)}"
       end
 
       def reviews_url(reference)
